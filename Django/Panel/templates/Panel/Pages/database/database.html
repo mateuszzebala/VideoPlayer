@@ -1,0 +1,30 @@
+{% extends 'Panel/panel.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Database</title>
+    <link rel="stylesheet" href="{% static 'Panel/css/database.css' %}">
+    {{ block.super }}
+{% endblock %}
+
+
+
+{% block main %}
+
+    <div class="models_menu">
+        {% for app, mdls in models.items %}
+            <h1>{{ app|upper }}</h1>
+            <div class="models_grid">
+                {% for mdl in mdls %}
+                    <a href="{{ mdl }}"><i class="fa-solid fa-table"></i> {{ mdl }}</a>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
+
+{% block path %}
+    <a href="{% url 'Panel:database' %}">DATABASE</a>
+{% endblock %}

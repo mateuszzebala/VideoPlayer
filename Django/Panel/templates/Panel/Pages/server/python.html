@@ -1,0 +1,38 @@
+{% extends 'Panel/panel.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Python</title>
+    <link rel="stylesheet" href="{% static 'Panel/css/server.css' %}">
+    {{ block.super }}
+{% endblock %}
+
+{% block main %}
+   <div class="python-server">
+
+   <form action="{% url 'Panel:server-python' %}" class="python-run" method="post">
+        {% csrf_token %}
+        <textarea spellcheck="false" name="python-code" placeholder="PYTHON CODE">{{ code }}</textarea>
+        <button type="submit">RUN</button>
+    </form>
+
+    <div class="python-console">
+        {% if console_content %}
+            <code><pre>{{ console_content }}</pre></code>
+        {% else %}
+            <span>CONSOLE</span>
+        {% endif %}
+    </div>
+   </div>
+{% endblock %}
+
+{% block topbar %}
+    <div class="topbar-menu">
+        <a href="{% url 'Panel:server-commands' %}">COMMANDS</a>
+        <a href="{% url 'Panel:server-python' %}">PYTHON</a>
+    </div>
+{% endblock %}
+
+{% block path %}
+    <a href="{% url 'Panel:server-python' %}">RUN PYTHON</a>
+{% endblock %}

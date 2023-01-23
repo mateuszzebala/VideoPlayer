@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'Main/css/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'Main/css/fonts.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    {% if request.user.is_superuser %}
+        <div class="admin-panel">
+            <div>
+                <a href="{% url 'Panel:home' %}">PANEL</a>
+                <a href="{% url 'admin:index' %}">ADMIN</a>
+                {% if page %}
+                    <a href="{% url 'Panel:pages-edit' id=page.id  %}">THIS PAGE</a>
+                    <a href="{% url 'Panel:database-model' name='Comment'  %}?q=page__id%3D{{ page.id }}">COMMENTS</a>
+                {% endif %}
+            </div>
+            <div>
+                {% if request.user %}
+                    <a href="{% url 'Panel:users-user' id=request.user.id %}">{{ request.user.username|upper }}</a>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+    <nav class="main">
+        <a href="/index.html">INDEX</a>
+
+    </nav>
+    <aside>
+        {% block aside %}{% endblock %}
+    </aside>
+    <section class="content">
+        {% block content %}{% endblock %}
+    </section>
+    {% block comments %}{% endblock %}
+    <footer>
+        {% block footer %}{% endblock %}
+    </footer>
+    <script src="{% static 'Main/js/layout.js' %}"></script>
+</body>
+</html>

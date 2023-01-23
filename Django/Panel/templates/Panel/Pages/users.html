@@ -1,0 +1,40 @@
+{% extends 'Panel/panel.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Users</title>
+    <link rel="stylesheet" href="{% static 'Panel/css/users.css' %}">
+    {{ block.super }}
+{% endblock %}
+
+{% block main %}
+    <div class="users">
+
+    {% for user in users %}
+        <a href="{% url 'Panel:users-user' id=user.id %}">
+        <div class="user-tile">
+            <div>
+                <div style="width: 40px; height: 40px">
+                    <img src="{% url 'Account:image' id=user.id %}" alt="{{ user.username }}">
+                </div>
+                {{ user.username }}
+            </div>
+            {% if user.is_staff %}
+                <i class="fa-solid fa-lock"></i>
+            {% endif %}
+        </div>
+        </a>
+    {% endfor %}
+    {% if not users %}
+        <div class="user-tile">0 users</div>
+    {% endif %}
+    </div>
+{% endblock %}
+
+{% block topbar %}
+    <form action="{% url 'Panel:users' %}" class="form-search">
+        <input type="search" name="q" autocomplete="off" value="{{ q|default_if_none:"" }}">
+        <button type="submit">SEARCH</button>
+        <a href="{% url 'Panel:users' %}"><i class="fa-solid fa-xmark"></i></a>
+    </form>
+{% endblock %}

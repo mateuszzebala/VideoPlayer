@@ -1,0 +1,84 @@
+{% extends 'Main/layout.html' %}
+{% load static %}
+
+{% block head %}
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="{% static 'Main/css/page.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="page">
+        <h1 class="page-title">{{ page.title }}</h1>
+        <div>{{ page.html_content|safe }}</div>
+    </div>
+{% endblock %}
+
+{% block aside %}
+
+{% endblock %}
+
+{% block comments %}
+    <div class="comments">
+        <form action="" method="post" class="add-comment-form">
+            <div>
+                <input type="hidden" class="reply-inp" name="reply">
+                <input class="add-comment-inp" placeholder="Add comment" name="content">
+                <button type="button" class="clear-reply"><i class="fa-solid fa-xmark"></i></button>
+                <button type="submit">ADD</button>
+                {% csrf_token %}
+            </div>
+
+
+        </form>
+        {% for comment in comments %}
+            <div class="comment">
+                <div class="row">
+                    <img class="comment-image" src="{% url 'Account:image' id=comment.main.user.id %}" alt="{{ comment.main.user.username }}">
+                    <div class="column">
+                        <div class="info">
+                            <span>{{ comment.main.user.username }}</span>
+                            <span>{{ comment.main.datetime|date:"d-m-y" }}</span>
+                        </div>
+                        <p class="main">{{ comment.main.content }}</p>
+                        <div class="tools">
+                            {% if request.user.is_superuser %}
+                                <a href="{% url 'Panel:database-edit' name='Comment' id=comment.main.id %}">EDIT</a>
+                            {% endif %}
+
+                            <a href="#add-comment" comment-id="{{ comment.main.id }}" comment-user="{{ comment.main.user.username }}" class="reply-btn">REPLY</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="replies">
+                    {% for reply in comment.replies %}
+                        <div class="comment-reply">
+                           <div class="row">
+                                <i class="fa-solid fa-reply" style="transform: rotate(180deg)"></i>
+                                <img class="comment-image" src="{% url 'Account:image' id=comment.main.user.id %}" alt="{{ comment.main.user.username }}">
+                                <div class="column">
+                                    <div class="info">
+                                        <span>{{ reply.user.username }}</span>
+                                        <span>{{ reply.datetime|date:"d-m-y" }}</span>
+                                    </div>
+                                    <p class="reply">{{ reply.content }}</p>
+                                    <div class="tools">
+                                        {% if request.user.is_superuser %}
+                                            <a href="{% url 'Panel:database-edit' name='Comment' id=reply.id %}">EDIT</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                           </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+    FOOTER
+{% endblock %}

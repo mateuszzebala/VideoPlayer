@@ -1,0 +1,36 @@
+{% extends 'Panel/panel.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Show</title>
+    <link rel="stylesheet" href="{% static 'Panel/css/database.css' %}">
+    {{ block.super }}
+{% endblock %}
+
+{% block main %}
+    <section class="show_model">
+        <h1>{{ item }}</h1>
+        {% for fieldname, value in fields.items %}
+            <span class="field">
+                <span class="fieldname">{{ fieldname }}</span>
+                <br>
+                {% if not value.key %}
+                    <span>
+                        {{ value.value }}
+                    </span>
+                {% else %}
+                    <a href="{{ value.link }}" class="fieldname">{{ value.value }} <i class="fa-solid fa-arrow-right"></i></a>
+                {% endif %}
+            </span>
+            
+        {% endfor %}
+    </section>
+{% endblock %}
+
+
+{% block topbar %}
+    <nav class="models">
+        <a href="{% url 'Panel:database-edit' name=model id=item.pk %}">EDIT</a>
+        <a href="{% url 'Panel:database-delete' name=model id=item.pk %}">DELETE</a>
+    </nav>
+{% endblock %}

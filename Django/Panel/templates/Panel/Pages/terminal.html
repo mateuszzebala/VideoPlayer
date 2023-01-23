@@ -1,0 +1,23 @@
+{% extends 'Panel/panel.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Terminal</title>
+    <link rel="stylesheet" href="{% static 'Panel/css/terminal.css' %}">
+    {{ block.super }}
+{% endblock %}
+
+{% block main %}
+    <a href="{% url 'Panel:terminal-reset' %}" class="refresh">RESET</a>
+<section class="terminal">
+
+</section>
+{% endblock %}
+
+{% block path %}
+    <a href="{% url 'Panel:terminal' %}">Terminal</a>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'Panel/js/terminal.js' %}"></script>
+{% endblock %}

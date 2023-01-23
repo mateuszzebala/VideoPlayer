@@ -1,0 +1,328 @@
+nav.models {
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px;
+  gap: 20px;
+  background-color: transparent;
+  overflow-x: auto;
+  box-shadow: 0 0 10px var(--bg-special);
+}
+nav.models a {
+  color: var(--font-special);
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  transition: background-color 0.2s;
+}
+nav.models a:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+nav.models::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+}
+
+.models_menu {
+  padding: 20px;
+}
+.models_menu h1 {
+  font-weight: bold;
+}
+
+.models_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+.models_grid a {
+  display: flex;
+  gap: 10px;
+  background-color: var(--bg-special);
+  padding: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  color: var(--font-special);
+  font-size: 15px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.db_table {
+  padding: 30px;
+  max-width: 100%;
+  overflow-x: auto;
+}
+.db_table .toptools {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.db_table .toptools .number {
+  padding: 10px 30px;
+}
+.db_table .toptools a {
+  color: var(--font-special);
+  padding: 10px;
+  border-radius: 10px;
+  background-color: var(--bg-special);
+}
+
+.query {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  padding: 20px;
+}
+.query input {
+  border: 2px solid var(--bg-special);
+  color: var(--font-color);
+  font-size: 20px;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: transparent;
+  transition: 0.2s;
+  border-radius: 5px;
+}
+.query input:focus {
+  outline: none;
+}
+.query .err {
+  position: absolute;
+  left: 60px;
+}
+.query button {
+  border: 0;
+  color: var(--font-special);
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: var(--bg-special);
+}
+.query a {
+  color: var(--font-color);
+}
+.query p {
+  white-space: nowrap;
+}
+
+.table-container {
+  width: 100%;
+  overflow: auto;
+  border-radius: 5px;
+}
+
+table.model {
+  border-collapse: collapse;
+  margin: auto;
+  width: 95%;
+  border-style: hidden;
+  border-radius: 10px;
+  overflow: auto;
+}
+table.model .delete_btn {
+  background-color: transparent;
+  color: var(--font-color);
+  font-size: 20px;
+  border: 0;
+  cursor: pointer;
+}
+table.model tr th {
+  border: 2px solid var(--bg-special);
+  padding: 10px;
+  color: var(--font-special);
+  background-color: var(--bg-special);
+  white-space: nowrap;
+  font-size: 20px;
+  text-align: center;
+}
+table.model tr th:first-child {
+  border-top-left-radius: 20px;
+}
+table.model tr th:last-child {
+  border-top-right-radius: 20px;
+}
+table.model tr td {
+  border: 2px solid var(--bg-special);
+  padding: 10px;
+  white-space: nowrap;
+  font-size: 20px;
+  text-align: center;
+}
+table.model tr td a {
+  color: var(--font-color);
+}
+table.model tr td.icon {
+  width: 40px;
+}
+table.model tr tr:nth-child(even) td {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.edit_model, .add_row {
+  padding: 40px;
+}
+.edit_model form, .add_row form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: flex-start;
+  position: relative;
+  text-align: left;
+  width: 500px;
+  z-index: 0;
+  align-items: flex-start;
+}
+.edit_model form p, .add_row form p {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.edit_model form p label, .add_row form p label {
+  font-size: 20px;
+}
+.edit_model form p input, .add_row form p input {
+  z-index: 0;
+  background-color: transparent;
+  color: var(--font-color);
+  font-size: 20px;
+  border: 0;
+  border-bottom: 2px solid var(--font-color);
+  padding: 10px 20px;
+  width: 400px;
+  box-sizing: border-box;
+}
+.edit_model form p input:focus, .add_row form p input:focus {
+  outline: none;
+}
+.edit_model form p select, .add_row form p select {
+  border: 2px solid var(--font-color);
+  resize: both;
+  background-color: transparent;
+  color: var(--font-color);
+  border-radius: 3px;
+  width: 400px;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 17px;
+}
+.edit_model form p select option, .add_row form p select option {
+  background-color: var(--bg-color);
+}
+.edit_model form p select:focus, .add_row form p select:focus {
+  outline: none;
+}
+.edit_model form p a, .add_row form p a {
+  color: var(--font-color);
+  padding: 10px;
+  max-width: 250px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.edit_model form p input[type=checkbox], .add_row form p input[type=checkbox] {
+  width: 40px;
+  min-width: 0px;
+  height: 40px;
+  cursor: pointer;
+  accent-color: var(--bg-special);
+}
+.edit_model form p input[type=file]::file-selector-button, .add_row form p input[type=file]::file-selector-button {
+  display: none;
+}
+.edit_model form p textarea, .add_row form p textarea {
+  background-color: transparent;
+  color: var(--font-color);
+  border: 2px solid var(--font-color);
+  padding: 10px 20px;
+  border-radius: 8px;
+  width: 400px;
+  box-sizing: border-box;
+}
+.edit_model form p textarea:focus, .add_row form p textarea:focus {
+  outline: none;
+}
+.edit_model form button[type=submit], .add_row form button[type=submit] {
+  border: 0;
+  font-size: 20px;
+  padding: 10px 50px;
+  color: var(--font-special);
+  border-radius: 5px;
+  background-color: var(--bg-special);
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  cursor: pointer;
+}
+.edit_model form .helptext, .add_row form .helptext {
+  font-size: 10px;
+}
+.edit_model form select, .add_row form select {
+  min-width: 100px;
+}
+
+.model_delete {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+  font-size: 30px;
+}
+.model_delete span {
+  font-size: 25px;
+  text-align: center;
+}
+.model_delete div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.model_delete div a {
+  padding: 10px;
+  font-size: 20px;
+  background-color: var(--bg-special);
+  color: var(--font-special);
+  border-radius: 5px;
+}
+
+.show_model {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.show_model h1 {
+  font-size: 30px;
+  padding: 20px;
+  text-align: center;
+}
+.show_model .fieldname {
+  font-size: 15px;
+  padding: 10px 0;
+  display: inline-block;
+}
+.show_model .field {
+  padding: 10px;
+  background-color: var(--bg-special);
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 20px;
+}
+.show_model .field a {
+  font-size: 20px;
+  color: var(--font-special);
+  text-decoration: underline;
+}
+
+/*# sourceMappingURL=database.css.map */

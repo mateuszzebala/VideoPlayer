@@ -1,0 +1,140 @@
+.commands {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px;
+  gap: 10px;
+}
+.commands .add_command {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
+.commands .add_command input {
+  border: 0;
+  border-bottom: 3px solid var(--font-color);
+  padding: 10px 10px;
+  font-weight: bold;
+  background-color: transparent;
+  color: var(--font-color);
+  font-size: 20px;
+  text-align: center;
+}
+.commands .add_command input:focus {
+  outline: none;
+}
+.commands .add_command button {
+  background-color: var(--font-color);
+  color: var(--bg-color);
+  border: 0;
+  font-size: 20px;
+  padding: 12px 30px;
+  border-radius: 5px;
+}
+.commands .row {
+  display: flex;
+  gap: 20px;
+  max-width: 850px;
+  width: 100%;
+  justify-content: space-between;
+  font-size: 20px;
+  flex-direction: row;
+  border-radius: 5px;
+  color: var(--font-color);
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+.commands .row span {
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.commands .row a {
+  color: var(--font-color);
+}
+.commands .row div {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.info {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 5px 20px;
+}
+
+.python-run {
+  position: relative;
+  width: 100%;
+  margin: auto;
+  height: 100%;
+  box-sizing: border-box;
+  left: 0;
+  right: 0;
+}
+.python-run textarea {
+  background-color: transparent;
+  color: var(--font-color);
+  resize: none;
+  padding: 10px;
+  font-size: 20px;
+  box-sizing: border-box;
+  border: 0;
+  border-left: 3px solid var(--font-color);
+  font-weight: bold;
+  width: 100%;
+  height: 100%;
+}
+.python-run textarea:focus {
+  outline: none;
+}
+.python-run button {
+  background-color: var(--bg-special);
+  color: var(--font-special);
+  border: 0;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 20px;
+  position: absolute;
+  right: 30px;
+  cursor: pointer;
+  bottom: 30px;
+}
+
+.topbar-menu {
+  display: flex;
+  gap: 5px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.topbar-menu a {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  color: var(--font-special);
+  border-radius: 4px;
+}
+
+.python-server {
+  padding: 30px;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  gap: 20px;
+}
+.python-server .python-console {
+  background-color: var(--bg-special);
+  padding: 20px;
+  min-height: 130px;
+  width: 100%;
+  margin: auto;
+  left: 0;
+  right: 0;
+  overflow: auto;
+  border-radius: 5px;
+}/*# sourceMappingURL=server.css.map */

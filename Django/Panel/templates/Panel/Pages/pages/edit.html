@@ -1,0 +1,43 @@
+{% extends 'Panel/panel.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Edit page</title>
+    <link rel="stylesheet" href="{% static 'Panel/css/pages.css' %}">
+    <script src="https://cdn.tiny.cloud/1/4c5ubylmkd32esa7gn5drh38i4pqdzpm8w3ccx4rbs30o6qx/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    {{ block.super }}
+{% endblock %}
+
+{% block main %}
+    <form class="edit-page" action="" method="post">
+        <textarea id="html_content" name="html_content">{{ page.html_content }}</textarea>
+        {% csrf_token %}
+        <button type="submit" class="ctrls"><i class="fa-solid fa-floppy-disk"></i> SAVE</button>
+    </form>
+{% endblock %}
+
+{% block path %}
+    <a href="{% url 'Panel:pages' %}">PAGES</a>
+    <a href="{% url 'Panel:pages-edit' id=page.id %}">{{ page.short }}</a>
+{% endblock %}
+
+{% block topbar %}
+    <div class="topbar-tools-pages">
+        <div>
+            <a target="_blank" href="{% url 'Main:page' short=page.short %}"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            <a href="{% url 'Panel:pages-delete' id=page.id %}" class="confirm-a">DELETE</a>
+            <a href="{% url 'Panel:database-edit' name='Page' id=page.id %}">EDIT</a>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+    tinymce.init({
+        selector: '#html_content',
+        plugins: 'anchor autolink fullscreen charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+        toolbar: 'fullscreen | undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+    });
+    </script>
+{% endblock %}

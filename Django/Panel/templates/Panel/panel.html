@@ -1,0 +1,61 @@
+{% extends 'Panel/layout.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+
+    <aside class="left-panel">
+
+        <div>
+            <header><i class="fa-solid fa-sliders"></i> PANEL</header>
+            <section>
+                <a href="{% url 'Panel:home' %}"><i class="fa-solid fa-house"></i> HOME</a>
+                <a href="{% url 'Panel:database' %}"><i class="fa-solid fa-database"></i> DATABASE</a>
+                <a href="{% url 'Panel:users' %}"><i class="fa-solid fa-users"></i> USERS</a>
+                <a href="{% url 'Panel:server-commands' %}"><i class="fa-solid fa-server"></i> SERVER</a>
+                <a href="{% url 'Panel:terminal' %}"><i class="fa-solid fa-terminal"></i> TERMINAL</a>
+                <a href="{% url 'Panel:editor' %}"><i class="fa-solid fa-code"></i> EDITOR</a>
+                <a href="{% url 'Panel:settings' %}"><i class="fa-solid fa-gear"></i> SETTINGS</a>
+                {% for page in registered_pages %}
+                    <a href="{% url page.url %}">{{ page.icon|safe }} {{ page.name|upper }}</a>
+                {% endfor %}
+            </section>
+        </div>
+        <footer>
+            <button class="change-theme"><i class="fa-solid fa-brush"></i> </button>
+        </footer>
+    </aside>
+    <section class="content">
+         <nav class="top-panel">
+
+            <section class="path">
+                <button class="burger"><i class="fa-solid fa-bars"></i></button>
+                <div class="pth">
+                    {% block path %}
+                        {% for text, link in path.items %}
+                            <a href="{{ link }}">{{ text }}</a>
+                        {% endfor %}
+                    {% endblock %}
+                </div>
+            </section>
+            {% if request.user.is_superuser %}
+                <section class="menu">
+                    <a href="{% url 'Panel:users-user' id=request.user.id %}" class="user-a">
+                        <span>{{ request.user.username }}</span>
+                        <img height="40" src="{% url 'Account:image' id=request.user.id %}" alt="account-image">
+                    </a>
+                </section>
+            {% endif %}
+        </nav>
+        <div class="topbar">
+            {% block topbar %}{% endblock %}
+        </div>
+        <main>
+            <button class="topbar_toggle"><i class="fa-solid fa-circle-up"></i></button>
+            {% block main %}{% endblock %}
+        </main>
+    </section>
+    <div style="clear: both"></div>
+{% endblock %}

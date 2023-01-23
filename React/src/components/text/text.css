@@ -1,0 +1,7 @@
+span.text-component {
+  font-size: var(--font-size);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*# sourceMappingURL=text.css.map */

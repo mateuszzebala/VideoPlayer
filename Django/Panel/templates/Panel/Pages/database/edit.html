@@ -1,0 +1,31 @@
+{% extends 'Panel/panel.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Database</title>
+    <link rel="stylesheet" href="{% static 'Panel/css/database.css' %}">
+    {{ block.super }}
+{% endblock %}
+
+{% block main %}
+    <section class="edit_model">
+        <form action="" method="post" enctype="multipart/form-data">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button type="submit" class="ctrls"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+        </form>
+    </section>
+{% endblock %}
+
+{% block path %}
+    {% for name, link in path %}
+        <a href="{{ link }}">{{ name }}</a>
+    {% endfor %}
+{% endblock %}
+
+{% block topbar %}
+    <nav class="models">
+        <a href="{% url 'Panel:database-show' name=model id=item.pk %}">SHOW</a>
+        <a href="{% url 'Panel:database-delete' name=model id=item.pk %}">DELETE</a>
+    </nav>
+{% endblock %}

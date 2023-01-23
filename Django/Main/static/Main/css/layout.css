@@ -1,0 +1,165 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+body * {
+  box-sizing: border-box;
+}
+
+nav.main {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-size: 20px;
+  gap: 20px;
+  background-color: #ddd;
+}
+nav.main a {
+  color: #000;
+  text-decoration: none;
+}
+
+.admin-panel {
+  background-color: #292929;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  color: #fff;
+}
+.admin-panel a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.2s color;
+}
+.admin-panel a:hover {
+  color: #ccc;
+}
+.admin-panel div {
+  display: flex;
+  gap: 30px;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  width: 60%;
+  margin: auto;
+  left: 0;
+  right: 0;
+  min-width: 600px;
+}
+.comments .comment {
+  padding: 20px;
+  border-bottom: 2px solid #000;
+}
+.comments .comment .cloumn {
+  display: flex;
+  flex-direction: column;
+}
+.comments .comment .row {
+  display: flex;
+  align-items: center;
+}
+.comments .comment .comment-image {
+  height: 80px;
+  border-radius: 50%;
+}
+.comments .comment .comment-reply {
+  padding: 10px;
+}
+.comments .comment p.main {
+  padding: 10px;
+}
+.comments .comment .replies {
+  padding-left: 40px;
+}
+.comments .comment .replies p.reply {
+  padding: 10px;
+}
+.comments .comment .info {
+  color: #000;
+  padding: 10px 0 0;
+  font-weight: normal;
+  display: flex;
+  gap: 20px;
+}
+.comments .comment .tools {
+  display: flex;
+  gap: 10px;
+}
+.comments .comment .tools a {
+  color: #000;
+  font-size: 13px;
+  font-weight: 100;
+  text-decoration: none;
+}
+.comments .comment .reply-to {
+  font-size: 15px;
+  padding: 0;
+}
+.comments .add-comment-form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: flex-start;
+}
+.comments .add-comment-form input {
+  border: 0;
+  border-bottom: 2px solid #000;
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: lighter;
+}
+.comments .add-comment-form input:focus {
+  outline: none;
+}
+.comments .add-comment-form div {
+  width: 100%;
+  display: flex;
+  padding: 0 20px;
+  justify-content: center;
+  gap: 20px;
+}
+.comments .add-comment-form .title {
+  font-size: 20px;
+  padding: 20px;
+}
+.comments .add-comment-form button {
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 5px;
+  background-color: #ddd;
+  cursor: pointer;
+  width: 100px;
+  border: 0;
+  display: inline-block;
+}
+.comments .add-comment-form .clear-reply {
+  padding: 10px 20px;
+  display: none;
+  width: auto;
+}
+
+.page {
+  margin: auto;
+  left: 0;
+  right: 0;
+  width: 80%;
+}
+
+footer {
+  background-color: #000000;
+  color: #fff;
+  padding: 20px;
+}/*# sourceMappingURL=layout.css.map */

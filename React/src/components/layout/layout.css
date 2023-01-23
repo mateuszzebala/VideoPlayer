@@ -1,0 +1,5 @@
+.overflow-component::-webkit-scrollbar {
+  display: var(--scrollbar-display);
+}
+
+/*# sourceMappingURL=layout.css.map */

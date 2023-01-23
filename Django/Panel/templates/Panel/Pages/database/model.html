@@ -1,0 +1,92 @@
+{% extends 'Panel/panel.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Database</title>
+    <link rel="stylesheet" href="{% static 'Panel/css/database.css' %}">
+    {{ block.super }}
+{% endblock %}
+
+{% block topbar %}
+    <nav class="models">
+        {% for name in names %}
+            <a href="{{ name }}">{{ name }}</a>
+        {% endfor %}
+    </nav>
+
+{% endblock %}
+
+{% block main %}
+<div class="db_table">
+    <div class="toptools">
+        <a href="{% url 'Panel:database-add' name=model %}">ADD NEW {{ model.upper }}</a>
+
+        <div class="change-page">
+            {% if left_page %}
+            <a href="?p={{ left_page }}"><i class="fa-solid fa-arrow-left"></i></a>
+            {% endif %}
+            <a class="number">{{ page }}</a>
+            {% if right_page %}
+            <a href="?p={{ right_page }}"><i class="fa-solid fa-arrow-right"></i></a>
+            {% endif %}
+        </div>
+    </div>
+     <form class="query" action="{% url 'Panel:database-model' name=model %}" method="get">
+        <input autocomplete="off" type="search" name="q" value="{% if query is not None %}{{ query }}{% endif %}">
+        <button type="submit">QUERY</button>
+        <span class="err">{% if queryerr %}ERROR{% endif %}</span>
+
+        <p>(ROWS: {{ length }})</p>
+    </form>
+    <div class="table-container">
+    <table class="model">
+        <tr>
+            {% if rows %}
+                 <th></th>
+            {% endif %}
+            {% for field in fields %}
+                <th>{{ field }}</th>
+            {% endfor %}
+            {% if rows %}
+                 <th></th>
+            {% endif %}
+        </tr>
+        {% for row in rows %}
+
+                <tr>
+                    <td class="icon">
+                        <a href="{% url 'Panel:database-edit' name=model id=row.0 %}">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+                    </td>
+                    {% for field in row %}
+                        <td><a href="{% url 'Panel:database-show' name=model id=row.0 %}">{{ field }}</a></td>
+                    {% endfor %}
+                    <td class="icon">
+                        <a href="{% url 'Panel:database-delete' name=model id=row.0 %}">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </a>
+                    </td>
+                </tr>
+
+        {% endfor %}
+        {% if not rows %}
+            <tr>
+            <td colspan="100%">EMPTY</td>
+            </tr>
+        {% endif %}
+    </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block path %}
+    {% for name, link in path %}
+        <a href="{{ link }}">{{ name }}</a>
+    {% endfor %}
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'Panel/js/database.js' %}"></script>
+{% endblock %}
+

@@ -1,0 +1,50 @@
+{% extends 'Panel/panel.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Pages</title>
+    <link rel="stylesheet" href="{% static 'Panel/css/pages.css' %}">
+    {{ block.super }}
+{% endblock %}
+
+{% block main %}
+    <div class="page-tiles">
+        {% for page in pages %}
+            <div class="page-tile">
+                <h1> {{ page.title }}</a></h1>
+                <p>{{ page.description }}</p>
+                <p>{{ page.short }}</p>
+                <div>
+                    <a href="{% url 'Panel:pages-edit' id=page.id %}"><i class="fa-solid fa-pen"></i></a>
+                    
+                    <a href="{% url 'Main:page' short=page.short %}"><i class="fa-solid fa-eye"></i></a>
+
+                    <a href="{% url 'Panel:database-edit' name='Page' id=page.id %}"><i class="fa-solid fa-database"></i></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block path %}
+    <a href="{% url 'Panel:pages' %}">PAGES</a>
+{% endblock %}
+
+{% block topbar %}
+    <div class="topbar-tools-pages">
+        <div>
+            <a href="{% url 'Panel:pages-new' %}">NEW</a>
+        </div>
+        <form action="">
+            <select name="category">
+                <option value="all" {% if category == 'all' %}selected{% endif %}>All</option>
+                <option value="none" {% if category == 'none' %}selected{% endif %}>No category</option>
+                {% for cat in categories %}
+                    <option value="{{ cat.name }}" {% if category == cat.name %}selected{% endif %} >{{ cat.name }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">OK</button>
+        </form>
+    </div>
+
+{% endblock %}

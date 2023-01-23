@@ -1,0 +1,14 @@
+{% extends 'Panel/panel.html' %}
+{% load static %}
+
+{% block head %}
+    <title>{{ code }}</title>
+    {{ block.super }}
+{% endblock %}
+
+{% block main %}
+   <main class="httpcode">
+    <h1>{{ code }}</h1>
+    <span>{{ message }}</span>
+   </main>
+{% endblock %}

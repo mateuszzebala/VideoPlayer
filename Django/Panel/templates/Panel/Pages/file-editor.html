@@ -1,0 +1,43 @@
+{% extends 'Panel/panel.html' %}
+{% load static %}
+
+{% block head %}
+    <title>File editor - {{ filename }}</title>
+    <link rel="stylesheet" href="{% static 'Panel/css/file-editor.css' %}">
+
+    {{ block.super }}
+{% endblock %}
+
+{% block main %}
+
+    <div class="code-editor">
+        {% if file.type == "image" %}
+            <div class="file-show"><img src="{{ file.src }}" alt="{{ file.name }}"></div>
+        {% elif  file.type == "music" %}
+            <div class="file-show"><audio controls src="{{ file.src }}"></audio></div>
+        {% elif  file.type == "video" %}
+            <div class="file-show"><video controls src="{{ file.src }}"></video></div>
+        {% elif  file.type == "run" %}
+            <div class="file-show"><h1>EXECUTABLE FILE</h1></div>
+        {% else %}
+            <form method="post">
+                <textarea preformate name="content" spellcheck="false">{{ content }}</textarea>
+                <button type="submit"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+                {% csrf_token %}
+            </form>
+        {% endif %}
+    </div>
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static 'Panel/js/file-editor.js' %}"></script>
+{% endblock %}
+
+{% block topbar %}
+    <div class="editor-file-tools">
+        <a class="confirm-a" href="{% url 'Panel:editor-delete' %}?p={{ p }}">Delete</a>
+        <a class="confirm-a" args="download=true" href="{% url 'Panel:local-file' %}?p={{ p }}">Download</a>
+        <button name="rename" input-type="text">Rename</button>
+    </div>
+{% endblock %}

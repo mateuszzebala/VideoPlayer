@@ -1,0 +1,87 @@
+.menu-component {
+    background-color: var(--bg-color);
+    padding: 10px 50px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: var(--bg-color);
+    position: sticky;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    z-index: 50;
+
+    .top {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 10;
+        box-sizing: border-box;
+    }
+
+    a {
+        .icon {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            span {
+                text-decoration: none;
+            }
+        }
+    }
+
+    .search{
+        display: flex;
+        align-items: stretch;
+        padding: 5px;
+        gap: 10px;
+        button{
+            height: 100%;
+            &:hover, &:focus{
+                color: #eee;
+            }
+        }
+        input{
+            height: 100%;
+            border: 0;
+            text-align: center;
+        }
+    }
+
+    .links {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 30px;
+
+        a {
+            text-decoration: none;
+
+            button {
+                background-color: transparent;
+                border: 0;
+                color: #fff;
+                font-size: 20px;
+                cursor: pointer;
+            }
+        }
+    }
+
+
+    .dropdown {
+        width: 100%;
+        top: 75px;
+        left: 0;
+        height: 300px;
+        position: absolute;
+        z-index: 90;
+        background: var(--bg-color);
+        box-sizing: border-box;
+        overflow: hidden;
+        transition: 0.2s;
+        border-bottom: 1px solid #ffffff88;
+    }
+}

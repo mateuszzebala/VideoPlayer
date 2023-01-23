@@ -1,0 +1,37 @@
+{% extends 'Panel/panel.html' %}
+{% load static %}
+
+{% block head %}
+    <title>New page</title>
+    <link rel="stylesheet" href="{% static 'Panel/css/pages.css' %}">
+     {{ block.super }}
+{% endblock %}
+
+{% block main %}
+    <form class="add-page" action="" method="post">
+        <h1>NEW PAGE</h1>
+        <input type="text" name="title" placeholder="Title">
+        <input type="text" name="short" placeholder="Short">
+        <textarea name="description" placeholder="Description" rows="15"></textarea>
+        <select name="category">
+            <option value="">------</option>
+            {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name|upper }}</option>
+            {% endfor %}
+        </select>
+        {% csrf_token %}
+        <button type="submit"><i class="fa-solid fa-floppy-disk"></i> SAVE</button>
+    </form>
+{% endblock %}
+
+{% block path %}
+    <a href="{% url 'Panel:pages' %}">PAGES</a>
+{% endblock %}
+
+{% block topbar %}
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

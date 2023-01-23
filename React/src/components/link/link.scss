@@ -1,0 +1,26 @@
+.link-component{
+  text-decoration: none;
+  color: var(--font-color);
+  transition: 0.2s;
+  display: inline-block;
+  border-radius: 3px;
+  position: relative;
+  text-align: center;
+  &:hover{
+    color: var(--hover-font);
+  }
+  &:hover::before {
+    height: 100%;
+  }
+  &::before{
+    display: block;
+    content: '';
+    height: 2px;
+    position:absolute;
+    width: var(--line);
+    transition: height 0.1s;
+    background-color: var(--line-color);
+    z-index: -1;
+    bottom: 0;
+  }
+}

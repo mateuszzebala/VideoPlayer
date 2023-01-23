@@ -1,0 +1,45 @@
+{% extends 'Panel/panel.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Server</title>
+    <link rel="stylesheet" href="{% static 'Panel/css/server.css' %}">
+    {{ block.super }}
+{% endblock %}
+
+{% block main %}
+
+    <div class="commands">
+         <form action="{% url 'Panel:server-add-command' %}" method="post" class="add_command">
+            <input type="text" name="command" autocomplete="off">
+             {% csrf_token %}
+            <button type="submit">ADD</button>
+        </form>
+    {% for command in commands %}
+        <div class="row">
+            <span class="command">{{ command.command }}</span>
+            <div>
+                {% if command.run %}
+                    <a class="run" href="{% url 'Panel:server-stop-command' id=command.id %}"><i class="fa-solid fa-pause"></i></a>
+                {% else %}
+                    <a class="pause" href="{% url 'Panel:server-run-command' id=command.id %}"><i class="fa-solid fa-play"></i></a>
+                {% endif %}
+                <a href="{% url 'Panel:server-delete-command' id=command.id %}"><i class="fa-solid fa-trash-can"></i></a>
+            </div>
+        </div>
+
+    {% endfor %}
+
+    </div>
+{% endblock %}
+
+{% block topbar %}
+    <div class="topbar-menu">
+        <a href="{% url 'Panel:server-commands' %}">COMMANDS</a>
+        <a href="{% url 'Panel:server-python' %}">PYTHON</a>
+    </div>
+{% endblock %}
+
+{% block path %}
+    <a href="{% url 'Panel:server-commands' %}">COMMANDS</a>
+{% endblock %}

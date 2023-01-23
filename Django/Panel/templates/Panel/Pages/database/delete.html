@@ -1,0 +1,23 @@
+{% extends 'Panel/panel.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Database</title>
+    <link rel="stylesheet" href="{% static 'Panel/css/database.css' %}">
+    {{ block.super }}
+{% endblock %}
+
+{% block main %}
+    <section class="model_delete">
+        <span>Delete<br>"{{ item }}"</span>
+        <div>
+            <a href="?delete=true" class="delete">DELETE</a>
+            <a href="{% url 'Panel:database-model' name=name %}" class="delete">CANCEL</a>
+        </div>
+    </section>
+{% endblock %}
+
+{% block path %}
+    <a href="{% url 'Panel:database-model' name=name %}">{{ name }}</a>
+    <a href="{% url 'Panel:database-edit' name=name id=item.id %}">{{ item }}</a>
+{% endblock %}

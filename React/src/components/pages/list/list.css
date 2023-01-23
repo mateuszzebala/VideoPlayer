@@ -1,0 +1,14 @@
+.list-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+}
+.list-page .grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 160px));
+}
+
+/*# sourceMappingURL=list.css.map */

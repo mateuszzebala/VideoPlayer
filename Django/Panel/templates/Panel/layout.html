@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="{% static 'Panel/img/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'Panel/css/config.css' %}">
+    <link rel="stylesheet" href="{% static 'Panel/css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'Panel/css/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'Panel/css/fonts.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">
+    <script src="{% static 'Panel/js/config.js' %}"></script>
+    <script src="{% static 'Panel/js/utils.js' %}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {% block head %}{% endblock %}
+    <script>
+    let csrf_token = "{{ csrf_token }}"
+
+    </script>
+    <link rel="stylesheet" href="{% static 'Panel/css/media.css' %}">
+</head>
+<body>
+    {% block content %}{% endblock %}
+
+    <script src="{% static 'Panel/js/css.js' %}"></script>
+    <script src="{% static 'Panel/js/connect.js' %}"></script>
+    <script src="{% static 'Panel/js/keyboard.js' %}"></script>
+    <script src="{% static 'Panel/js/layout.js' %}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

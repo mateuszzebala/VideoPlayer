@@ -1,0 +1,55 @@
+.login-main {
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+}
+.login-main form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+.login-main form h1 {
+  font-size: 30px;
+  color: var(--font-special);
+}
+.login-main form input {
+  background-color: transparent;
+  color: var(--font-special);
+  border: 0;
+  border-bottom: 3px solid var(--font-special);
+  font-size: 20px;
+  padding: 10px;
+  text-align: center;
+}
+.login-main form input:focus {
+  outline: none;
+}
+.login-main form input::-moz-placeholder {
+  color: var(--font-special);
+}
+.login-main form input:-ms-input-placeholder {
+  color: var(--font-special);
+}
+.login-main form input::placeholder {
+  color: var(--font-special);
+}
+.login-main form span {
+  color: var(--font-special);
+}
+.login-main form button {
+  background-color: var(--bg-special);
+  color: var(--font-special);
+  border: 0;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+.login-main form button:focus {
+  outline: none;
+}/*# sourceMappingURL=login.css.map */

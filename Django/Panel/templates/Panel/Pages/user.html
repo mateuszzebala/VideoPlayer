@@ -1,0 +1,71 @@
+{% extends 'Panel/panel.html' %}
+{% load static %}
+
+{% block head %}
+    <title>{{ request.user.username }}</title>
+    <link rel="stylesheet" href="{% static 'Panel/css/user.css' %}">
+    {{ block.super }}
+{% endblock %}
+
+{% block topbar %}
+     <div class="top-info">
+            <img src="{% url 'Account:image' id=user.id %}" alt="">
+            <div>
+                <h1>{{ user.username }}</h1>
+                <p>{{ user.email }}</p>
+                <p>{{ user.first_name }}</p>
+                <p>{{ user.last_name }}</p>
+            </div>
+            <div>
+                <p>Staff: {{ user.is_staff }}</p>
+                <p>Super user: {{ user.is_superuser }}</p>
+                <p>Active: {{ user.is_active }}</p>
+                <a href="{% url 'Panel:database-edit' name='User' id=user.id %}">EDIT</a>
+            </div>
+            <div>
+                <p>Date join: {{ user.date_joined }}</p>
+                <p>Last login: {{ user.last_login }}</p>
+
+                <a href="{% url 'Panel:logout-user' id=user.id %}">LOGOUT</a>
+            </div>
+        </div>
+{% endblock %}
+
+{% block main %}
+    <main class="user_editor">
+
+        <form action="{% url 'Panel:users-user' id=user.id %}" method="post" enctype="multipart/form-data">
+            <label for="username">Username</label>
+            <input type="text" name="username" value="{{ user.username }}">
+            <label for="first_name">Firstname</label>
+            <input type="text" name="first_name" value="{{ user.first_name }}">
+            <label for="last_name">Lastname</label>
+            <input type="text" name="last_name" value="{{ user.last_name }}">
+            {% csrf_token %}
+            <button type="submit"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+        </form>
+        <form action="{% url 'Panel:users-user' id=user.id %}" method="post" enctype="multipart/form-data">
+            <label for="image">Image</label>
+            <input type="file" name="image">
+            {% csrf_token %}
+            <button type="submit"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+        </form>
+        <form action="{% url 'Panel:users-user' id=user.id %}" method="post" enctype="multipart/form-data">
+            <label for="password">Password</label>
+            <input type="password" name="password">
+            {% csrf_token %}
+            {% if password_edited %}
+                Password Edited
+            {% endif %}
+            <button type="submit"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+        </form>
+
+        <form action="{% url 'Panel:users-user' id=user.id %}" method="post" enctype="multipart/form-data">
+            <label for="email">E-mail</label>
+            <input type="email" name="email" value="{{ user.email }}">
+            {% csrf_token %}
+            <button type="submit"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+        </form>
+
+    </main>
+{% endblock %}

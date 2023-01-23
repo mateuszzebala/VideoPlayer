@@ -1,0 +1,45 @@
+.video-page .video {
+  padding: 0 30px;
+  background: black;
+}
+.video-page .bottom-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.video-page .bottom-info div {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex-direction: column;
+}
+.video-page .bottom-info .links a {
+  margin: 0 5px;
+}
+.video-page .bottom-info .column, .video-page .bottom-info .row {
+  display: flex;
+  gap: 10px;
+}
+.video-page .bottom-info .column {
+  flex-direction: column;
+}
+.video-page .bottom-info .row {
+  flex-direction: row;
+}
+.video-page .season {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.video-page .season .episodes {
+  display: grid;
+  padding: 20px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
+.video-page .season .episodes button {
+  width: 100%;
+}
+
+/*# sourceMappingURL=video.css.map */

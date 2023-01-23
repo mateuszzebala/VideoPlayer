@@ -1,0 +1,31 @@
+{% extends 'Panel/panel.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Settings</title>
+    <link rel="stylesheet" href="{% static 'Panel/css/settings.css' %}">
+    <link rel="stylesheet" href="{% static 'Panel/css/file-editor.css' %}">
+    {{ block.super }}
+{% endblock %}
+
+{% block main %}
+   <div class="settings-main">
+        <div class="code-editor">
+            <form method="post" action="{% url 'Panel:settings' %}">
+                <textarea name="content" spellcheck="false">{{ content }}</textarea>
+                <button type="submit"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+                {% csrf_token %}
+            </form>
+        </div>
+   </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'Panel/js/settings.js' %}"></script>
+    <script src="{% static 'Panel/js/file-editor.js' %}"></script>
+
+{% endblock %}
+
+{% block path %}
+    <a href="{% url 'Panel:settings' %}">SETTINGS</a>
+{% endblock %}

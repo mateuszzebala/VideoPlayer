@@ -1,0 +1,11 @@
+
+.idea
+Account
+db.sqlite3
+Django
+Main
+manage.py
+Media
+Panel
+templates
+venv

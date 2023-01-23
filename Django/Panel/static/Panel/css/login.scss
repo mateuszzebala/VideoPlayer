@@ -1,0 +1,49 @@
+.login-main{
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        h1{
+            font-size: 30px;
+            color: var(--font-special);
+        }
+        input{
+            background-color: transparent;
+            color: var(--font-special);
+            border: 0;
+            border-bottom: 3px solid var(--font-special);
+            font-size: 20px;
+            padding: 10px;
+            text-align: center;
+            &:focus{
+                outline: none;
+            }
+            &::placeholder{
+                color: var(--font-special);
+            }
+        }
+        span{
+            color: var(--font-special);
+        }
+        button{
+            background-color: var(--bg-special);
+            color: var(--font-special);
+            border: 0;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 20px;
+            font-size: 20px;
+            text-align: center;
+            &:focus{
+                outline: none;
+            }
+        }
+    }
+}

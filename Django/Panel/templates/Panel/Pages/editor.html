@@ -1,0 +1,31 @@
+{% extends 'Panel/panel.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Editor</title>
+    <link rel="stylesheet" href="{% static 'Panel/css/editor.css' %}">
+    {{ block.super }}
+{% endblock %}
+
+{% block main %}
+    <div class="listdir">
+    {% for c, v in content.items %}
+        <a class="ff" href="{{ v.0 }}">
+            <i class="icon-{{ v.1 }}"></i>
+            <span class="filename">{{ c }}</span>
+        </a>
+    {% endfor %}
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'Panel/js/editor.js' %}"></script>
+{% endblock %}
+
+{% block topbar %}
+    <div class="editor-tools">
+        <button name="create-file" input-type="text">Create file</button>
+        <button name="create-folder" input-type="text">Create directory</button>
+        <button name="send-files" args="multiple" input-type="file">Send file</button>
+    </div>
+{% endblock %}

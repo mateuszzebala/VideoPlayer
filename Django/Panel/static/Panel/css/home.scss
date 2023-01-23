@@ -1,0 +1,25 @@
+.system_info{
+    font-size: 20px;
+    padding: 20px;
+    display: flex;
+    gap: 30px;
+    color: var(--font-special);
+}
+
+.home{
+
+    .widget{
+        display: flex;
+        justify-content: center;
+        margin: 20px auto;
+        left: 0;
+        right: 0;
+        float: left;
+        align-items: center;
+        border-radius: 20px;
+        padding: 30px;
+        canvas{
+            max-width: 100%;
+        }
+    }
+}

@@ -1,0 +1,32 @@
+.button-component {
+  padding: 0;
+  --font-color: #000;
+  --bg-color: #fff;
+  --border-color: #000;
+}
+.button-component button {
+  border: 3px solid var(--border-color);
+  border-width: var(--border-width);
+  background-color: var(--bg-color);
+  color: var(--font-color);
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 5px 20px;
+  border-radius: 3px;
+  transition: 0.2s;
+}
+.button-component button:hover, .button-component button:focus, .button-component button .active {
+  background-color: var(--border-color);
+  color: var(--bg-color);
+  box-shadow: 0 0 4px var(--border-color);
+  outline: none;
+}
+.button-component.active button {
+  background-color: var(--border-color);
+  color: var(--bg-color);
+  box-shadow: 0 0 4px var(--border-color);
+  outline: none;
+}
+
+/*# sourceMappingURL=button.css.map */

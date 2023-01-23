@@ -1,0 +1,28 @@
+button.burger{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 32px;
+  width: 50px;
+  position: relative;
+  background-color: transparent;
+  z-index: 10;
+  border: 0;
+  cursor: pointer;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: outline 0.3s;
+  span{
+    background-color: var(--span-color);
+    border-radius: 2px;
+    height: 4px;
+    transform-origin: center;
+    width: 100%;
+    transition: 0.2s;
+  }
+  &:focus{
+    outline: 3px solid rgba(var(--span-color), 0.3);
+
+  }
+}

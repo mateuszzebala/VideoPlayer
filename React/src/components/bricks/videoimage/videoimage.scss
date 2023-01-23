@@ -1,0 +1,59 @@
+.videoimage-component {
+    overflow: hidden;
+    margin: 5px;
+    width: 140px;
+    display: inline-flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    .image {
+        background-image: var(--bg-image);
+        display: flex;
+        width: 140px;
+        height: 210px;
+        flex-direction: column;
+        align-items: center;
+        background-size: cover;
+        border-radius: 5px;
+
+        background-position: center;
+        cursor: pointer;
+        justify-content: center;
+
+    }
+
+    &:hover {
+        button {
+            opacity: 1;
+        }
+    }
+
+    button {
+        background: rgba(255, 255, 255, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: 0.2s;
+        color: black;
+        border: 0;
+        border-radius: 50%;
+        aspect-ratio: 1/1;
+        width: 60px;
+        font-size: 25px;
+        text-align: center;
+        cursor: pointer;
+
+        i {
+            display: inline-block;
+            width: 20px;
+            padding-left: 3px;
+        }
+
+    }
+
+    span {
+        color: white;
+        font-size: 16px;
+    }
+}

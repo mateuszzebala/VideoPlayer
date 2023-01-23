@@ -1,0 +1,80 @@
+{% extends 'Panel/panel.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'Main/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'Panel/css/home.css' %}">
+    {{ block.super }}
+{% endblock %}
+
+{% block topbar %}
+    <div class="system_info">
+        {% for key, value in system_info.items %}
+        <span>{{ key }}: {{ value }}</span>
+    {% endfor %}
+    </div>
+{% endblock %}
+
+{% block main %}
+
+    <div class="home">
+
+        <script>
+            var labels = []
+            var lbls = []
+            var values = []
+            const charts = []
+            Chart.defaults.color = Config.themes[Config.theme_code]["--font-color"]
+
+        </script>
+        {% for widget in widgets %}
+            <div class="widget">
+                <canvas height="{{ widget.height }}" width="{{ widget.width }}" id="widget-{{ widget.id }}"></canvas>
+                <script>
+                    labels = {
+                        {% for key, value in widget.labels.items %}'{{ key }}': '{{ value }}',{% endfor %}
+                    }
+                    lbls = []
+                    values = []
+                    for (const [key, val] of Object.entries(labels)) {
+                        lbls.push(key.toUpperCase())
+                        values.push(val)
+                    }
+                    charts.push(new Chart(
+                        document.getElementById('widget-{{ widget.id }}'),
+                        {
+                            responsive: true,
+                            type:'{{ widget.type }}',
+                            data: {
+                                labels: lbls,
+                                datasets: [{
+                                    fill: true,
+                                    tension:0.3,
+                                    label: '{{ widget.title }}',
+                                    backgroundColor: shuffleArray(chartColors),
+                                    data: values,
+                                    borderColor: Config.themes[Config.theme_code]["--font-color"]
+                                }]
+                            },
+                            options: {
+                                 plugins: {
+                                    title: {
+                                        display: true,
+                                        text: '{{ widget.title }}',
+                                        fontColor: Config.themes[Config.theme_code]["--font-color"],
+                                    }
+                                },
+                            }
+                        }
+                    ))
+                </script>
+            </div>
+        {% endfor  %}
+
+    </div>
+{% endblock %}
+
+{% block path %}
+    <a href="{% url 'Panel:home' %}">HOME</a>
+{% endblock %}

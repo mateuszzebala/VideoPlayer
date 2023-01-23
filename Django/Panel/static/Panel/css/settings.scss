@@ -1,0 +1,16 @@
+.settings-main{
+
+    height: 100%;
+    .change-theme {
+        background: var(--bg-special);
+        padding: 10px;
+        color: var(--font-special);
+        border: 0;
+        border-radius: 5px;
+        margin: 10px;
+        cursor: pointer;
+        font-size: 15px;
+    }
+
+}
+

@@ -1,0 +1,44 @@
+.window-component {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center !important;
+  align-items: center !important;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 500;
+  overflow: hidden;
+}
+.window-component .window {
+  background-color: #fff;
+  padding: 10px 10px;
+  border-radius: 5px;
+  max-height: 80vh;
+  box-shadow: 0 0 10px #fff;
+  overflow: auto;
+}
+.window-component .xmark {
+  position: absolute;
+  top: 30px;
+  cursor: pointer;
+  background: transparent;
+  right: 30px;
+  font-size: 50px;
+  color: #ffffff;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  transition: 0.2s;
+  border: 0;
+}
+.window-component .xmark:hover, .window-component .xmark:focus {
+  transform: scale(1.1);
+}
+
+/*# sourceMappingURL=window.css.map */
